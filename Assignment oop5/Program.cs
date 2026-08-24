@@ -34,11 +34,26 @@ namespace Assignment_oop5
             // d) New copies of the referenced objects are created, so the original and copied objects have independent reference-type members.
 
             // e) Deep Copy is safer when modifying the copied object must not affect the original object, such as when copying a customer record that contains a list of addresses or orders.
-            #endregion 
+            #endregion
 
 
+            #region Q3 
 
 
+            // a)    A static field belongs to the class itself and is shared by all objects of that class.
+            //              An instance field belongs to a specific object, so every object has its own copy.
+
+
+            // b) A static method belongs to the class rather than to a specific object 
+            // No, a static method cannot directly access instance members because it does not have an instance of the class. 
+
+
+            //c) A static constructor initializes static members of a class. It is executed automatically once, before the class is first used.
+
+            //d) A static class is a class that contains only static members.
+            //No, you cannot create an object from a static class. 
+
+            #endregion
 
 
 
