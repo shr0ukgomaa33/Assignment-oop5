@@ -19,9 +19,22 @@ namespace Assignment_oop5
 
 
 
+            #region Q2
 
 
-            
+            // a) A Shallow Copy creates a new object and copies the values of the original object's fields. For reference-type fields, it copies the references, not the referenced object
+
+
+            // B) 
+            //  A Deep Copy creates a new object and also creates independent copies of the objects referenced by its reference-type members.
+
+
+            // C) The references are copied, so the original and copied objects point to the same referenced objects. 
+
+            // d) New copies of the referenced objects are created, so the original and copied objects have independent reference-type members.
+
+            // e) Deep Copy is safer when modifying the copied object must not affect the original object, such as when copying a customer record that contains a list of addresses or orders.
+            #endregion 
 
 
 
@@ -29,7 +42,8 @@ namespace Assignment_oop5
 
 
 
-        
+
+
 
         }
     }
