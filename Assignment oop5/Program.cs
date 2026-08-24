@@ -67,8 +67,20 @@ namespace Assignment_oop5
 
             #endregion
 
+            #region Q5
+
+            //a) A Partial Class allows the definition of one class to be split across multiple files. The parts are combined by the compiler into a single class.
+
+            // b) To organize large classes, improve readability, and allow different developers or tools to work on different parts of the same class.
+
+            //c) 
+            // A Partial Method is a method that can be declared in one part of a partial class and implemented in another part.
 
 
+            // d) 
+            // If a partial method has no implementation and meets the rules for an optional partial method, the compiler removes its declaration and any calls to it.
+
+            #endregion
 
 
 
