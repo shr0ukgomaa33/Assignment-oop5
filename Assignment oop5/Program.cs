@@ -55,6 +55,18 @@ namespace Assignment_oop5
 
             #endregion
 
+            #region Q4
+
+            // a)  An Extension Method is a method that allows you to add new functionality to an existing type without modifying its original source code or creating a derived class.
+
+            // b) The this keyword must be used with the first parameter. 
+
+            //c) It must be declared inside a static class. 
+
+            //d) No. An extension method does not have access to the private members of the class it extends. 
+
+            #endregion
+
 
 
 
