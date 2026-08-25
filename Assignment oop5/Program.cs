@@ -83,6 +83,279 @@ namespace Assignment_oop5
             #endregion
 
 
+            #region Practical
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Smart Delivery Management System");
+            Console.WriteLine("==========================================");
+
+
+
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Creating Shipments...");
+            Console.WriteLine("==========================================");
+
+            StandardShipment standardShipment = new StandardShipment(
+                "SH001",
+                "Laptop",
+                9,
+                50,
+                new DeliveryAddress("Cairo", "Tahrir Street", 10)
+            );
+
+            ExpressShipment expressShipment = new ExpressShipment(
+                "SH002",
+                "Phone",
+                4,
+                50,
+                new DeliveryAddress("Giza", "Pyramids Street", 20),
+                30
+            );
+
+            InternationalShipment internationalShipment = new InternationalShipment(
+                "SH003",
+                "Documents",
+                12,
+                50,
+                new DeliveryAddress("Fayoum", "Main Street", 15),
+                "Germany",
+                150
+            );
+
+            Console.WriteLine("Standard Shipment Created");
+            Console.WriteLine("Express Shipment Created");
+            Console.WriteLine("International Shipment Created");
+
+            Console.WriteLine(
+                $"Total Shipments Created : {Shipment.GetTotalShipmentsCreated()}"
+            );
+
+
+
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Object Copying");
+            Console.WriteLine("==========================================");
+
+            Shipment shipment1 = standardShipment;
+            Shipment shipment2 = shipment1;
+
+            Console.WriteLine($"Original Shipment : {shipment1.TrackingCode}");
+            Console.WriteLine($"Assigned Shipment : {shipment2.TrackingCode}");
+            Console.WriteLine(
+                $"Same Object : {ReferenceEquals(shipment1, shipment2)}"
+            );
+
+
+            
+
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("Shallow Copy");
+            Console.WriteLine("------------------------------------------");
+
+            Shipment shallowCopy = shipment1.ShallowCopy();
+
+            Console.WriteLine(
+                $"Original Shipment Address : {shipment1.Destination.City}"
+            );
+
+            Console.WriteLine(
+                $"Copied Shipment Address : {shallowCopy.Destination.City}"
+            );
+
+            Console.WriteLine("Changing copied shipment address...");
+
+            shallowCopy.Destination.City = "Giza";
+
+            Console.WriteLine(
+                $"Original Shipment Address : {shipment1.Destination.City}"
+            );
+
+            Console.WriteLine(
+                $"Copied Shipment Address : {shallowCopy.Destination.City}"
+            );
+
+            Console.WriteLine(
+                $"Same DeliveryAddress Object : " +
+                $"{ReferenceEquals(shipment1.Destination, shallowCopy.Destination)}"
+            );
+
+            shipment1.Destination.City = "Cairo";
+
+
+            
+
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("Deep Copy");
+            Console.WriteLine("------------------------------------------");
+
+            Shipment deepCopy = shipment1.DeepCopy();
+
+            Console.WriteLine(
+                $"Original Shipment Address : {shipment1.Destination.City}"
+            );
+
+            Console.WriteLine(
+                $"Copied Shipment Address : {deepCopy.Destination.City}"
+            );
+
+            Console.WriteLine("Changing copied shipment address...");
+
+            deepCopy.Destination.City = "Giza";
+
+            Console.WriteLine(
+                $"Original Shipment Address : {shipment1.Destination.City}"
+            );
+
+            Console.WriteLine(
+                $"Copied Shipment Address : {deepCopy.Destination.City}"
+            );
+
+            Console.WriteLine(
+                $"Same DeliveryAddress Object : " +
+                $"{ReferenceEquals(shipment1.Destination, deepCopy.Destination)}"
+            );
+
+
+
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Extension Methods");
+            Console.WriteLine("==========================================");
+
+            Console.WriteLine(standardShipment.GetSummary());
+            Console.WriteLine(expressShipment.GetSummary());
+            Console.WriteLine(internationalShipment.GetSummary());
+
+            Console.WriteLine();
+
+            Console.WriteLine(
+                $"SH001 Is Delivered : {standardShipment.IsDelivered()}"
+            );
+
+            Console.WriteLine(
+                $"SH003 Is Delivered : {internationalShipment.IsDelivered()}"
+            );
+
+
+            
+
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Tracking Status");
+            Console.WriteLine("==========================================");
+
+            standardShipment.UpdateTrackingStatus("Out For Delivery");
+
+
+            
+
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Static Utilities");
+            Console.WriteLine("==========================================");
+
+            DeliveryUtilities.PrintSeparator();
+
+            DeliveryUtilities.PrintSystemTitle();
+
+            Console.WriteLine(
+                $"Total Shipments Created : " +
+                $"{Shipment.GetTotalShipmentsCreated()}"
+            );
+
+
+            
+
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Partial Method");
+            Console.WriteLine("==========================================");
+
+            standardShipment.UpdateTrackingStatus("Delivered");
+
+
+            
+            DeliveryCenter center = new DeliveryCenter();
+
+            center.AddShipment(standardShipment);
+            center.AddShipment(expressShipment);
+            center.AddShipment(internationalShipment);
+
+            center.PrintAllShipments();
+
+            Console.WriteLine("==========================================");
+            Console.WriteLine();
+            Console.WriteLine("Tracking Status");
+            Console.WriteLine();
+
+            center.PrintTrackingStatuses();
+
+
+            
+
+            Console.WriteLine("==========================================");
+            Console.WriteLine();
+            Console.WriteLine("Insurance");
+            Console.WriteLine();
+
+            DeliveryReport report = new DeliveryReport();
+
+            report.PrintInsurance(standardShipment);
+            report.PrintInsurance(expressShipment);
+            report.PrintInsurance(internationalShipment);
+
+
+            
+
+            Console.WriteLine();
+            Console.WriteLine("==========================================");
+            Console.WriteLine();
+
+            ITrackable[] trackableShipments =
+            {
+    standardShipment,
+    expressShipment,
+    internationalShipment
+};
+
+            foreach (ITrackable shipment in trackableShipments)
+            {
+                report.PrintShipment(shipment);
+            }
+
+            Console.WriteLine();
+
+            IInsurable[] insurableShipments =
+            {
+    standardShipment,
+    expressShipment,
+    internationalShipment
+};
+
+            foreach (IInsurable shipment in insurableShipments)
+            {
+                report.PrintInsurance(shipment);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("==========================================");
+            Console.WriteLine();
+            Console.WriteLine("Interface Polymorphism Demonstrated Successfully.");
+
+            Console.WriteLine();
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Assignment Completed");
+            Console.WriteLine("==========================================");
+
+
+
+
+            #endregion
+
+
+
+
+
+
+
+
+
+
 
         }
     }
